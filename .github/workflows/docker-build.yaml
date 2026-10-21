@@ -51,7 +51,7 @@ jobs:
           # Enable BuildKit cache restore/save across workflow runs
           cache-from: type=gha,scope=php-${{ matrix.php }}
           cache-to: type=gha,mode=max,scope=php-${{ matrix.php }}
-          tags: phpdockerio/php:${{ matrix.php }}-cli
+          tags: fweberde/phpdocker:${{ matrix.php }}-cli
           target: cli
 
       - name: PHP FPM container
@@ -64,5 +64,5 @@ jobs:
           # Enable BuildKit cache restore/save across workflow runs
           cache-from: type=gha,scope=php-${{ matrix.php }}
           cache-to: type=gha,mode=max,scope=php-${{ matrix.php }}
-          tags: phpdockerio/php:${{ matrix.php }}-fpm
+          tags: fweberde/phpdocker:${{ matrix.php }}-fpm
           target: fpm
