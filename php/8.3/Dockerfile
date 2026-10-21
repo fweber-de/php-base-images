@@ -15,9 +15,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install Ondrej repos for Ubuntu jammy, PHP, composer and selected extensions - better selection than
 # the distro's packages
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends gnupg \
-    && echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu jammy main" > /etc/apt/sources.list.d/ondrej-php.list \
-    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C \
+    && apt-get install -y --no-install-recommends gnupg ca-certificates curl \
+    && curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb \
+    && dpkg -i /tmp/debsuryorg-archive-keyring.deb \
+    && sh -c 'echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ jammy main" > /etc/apt/sources.list.d/php.list' \
     && apt-get update \
     && apt-get -y --no-install-recommends install \
         ca-certificates \
