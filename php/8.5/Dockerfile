@@ -16,7 +16,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # the distro's packages
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gnupg \
-    && echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu noble main" > /etc/apt/sources.list.d/ondrej-php.list \
+    && echo "deb https://packages.sury.org/php noble main" > /etc/apt/sources.list.d/ondrej-php.list \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C \
     && apt-get update \
     && apt-get -y --no-install-recommends install \
